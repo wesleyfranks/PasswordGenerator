@@ -107,10 +107,6 @@ const updateSlider = async () => {
   updatePassIndicator();
 };
 
-
-
-updateSlider();
-
 const copyPassword = () => {
     navigator.clipboard.writeText(passwordInput.value);
     copyIcon.innerText = "check";
@@ -135,3 +131,5 @@ wordsOption.addEventListener("change", function () {
         generatePassword()
     }
 })
+
+updateSlider();
