@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
-    --primiary-color: #9500ff
+    --primary-color: #9500ff;
+    --green-color: #43A047;
 }
 
 * {
@@ -16,7 +17,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: var(--primiary-color);
+    background: var(--primary-color);
 }
 
 .container {
@@ -63,7 +64,7 @@ body {
 }
 
 .input-box span:hover{
-    color: var(--primiary-color) !important;
+    color: var(--primary-color) !important;
 }
 
 .wrapper .pass-indicator{
@@ -95,12 +96,12 @@ body {
 
 .pass-indicator#medium::before{
     width: 75%;
-    background: var(--primiary-color);
+    background: var(--primary-color); 
 }
 
 .pass-indicator#strong::before{
     width: 100%;
-    background: var(--primiary-color); 
+    background: var(--green-color); 
 }
 
 .wrapper .pass-length {
@@ -164,7 +165,6 @@ body {
     text-transform: uppercase;
     margin: 0.94rem 0 1.3rem
 }
-
 
 
 
