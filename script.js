@@ -79,7 +79,7 @@ const updatePassIndicator = () => {
 };
 
 const updateSlider = async () => {
-  const numWords = Math.ceil(lengthSlider.value / 3);
+  const numWords = lengthSlider.value;
   let words = [];
   
   if (wordsOption.checked) {
