@@ -12,6 +12,20 @@ const characters = {
     symbols: "!$%&|[](){}:;.,*+-#@<>~"
 }
 
+const getWords = async (numWords) => {
+
+    const wordsAPI = `https://random-word-api.vercel.app/api?words=${numWords}&length=9`;
+
+    try {
+        const response = await fetch(wordsAPI);
+        const data = await response.json();
+        console.log(data)
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 const generatePassword = () => {
     let staticPassword = "",
         randomPassword = "",
@@ -41,8 +55,15 @@ const generatePassword = () => {
 }
 
 const updatePassIndicator = () => {
-    passIndicator.id = lengthSlider.value <= 6 ? "weakest" : lengthSlider.value <= 12 ? "weak" : lengthSlider.value <= 18 ? "medium" : "strong"
-}
+  passIndicator.id =
+    lengthSlider.value <= 6
+      ? "weakest"
+      : lengthSlider.value <= 12
+      ? "weak"
+      : lengthSlider.value <= 18
+      ? "medium"
+      : "strong";
+};
 
 const updateSlider = () => {
     document.querySelector(".pass-length span").innerText = lengthSlider.value;
