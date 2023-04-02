@@ -4,6 +4,8 @@ const copyIcon = document.querySelector(".input-box span");
 const passwordInput = document.querySelector(".input-box input");
 const passIndicator = document.querySelector(".pass-indicator");
 const generateBtn = document.querySelector(".generate-btn");
+const wordsOption = document.querySelector("#words");
+
 
 const characters = {
     lowercase: "abcdefghijklmnopqrstuvwxyz",
@@ -96,3 +98,13 @@ const copyPassword = () => {
 copyIcon.addEventListener("click", copyPassword);
 lengthSlider.addEventListener("input", updateSlider);
 generateBtn.addEventListener("click", generatePassword);
+wordsOption.addEventListener("change", function () {
+    if (this.checked) {
+        options.forEach(option => {
+            if (option.id !== "words") {
+                option.checked = false;
+            }
+        });
+    }
+    generatePassword()
+})
