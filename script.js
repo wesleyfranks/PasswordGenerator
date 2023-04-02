@@ -79,10 +79,7 @@ const updatePassIndicator = () => {
 };
 
 const updateSlider = async () => {
-
-    passwordInput.value = ""
-
-    document.querySelector(".pass-length span").innerHTML = lengthSlider.value
+    document.querySelector(".pass-length span").innerHTML = lengthSlider.value;
     const numWords = lengthSlider.value;
     let words = [];
     
@@ -90,12 +87,17 @@ const updateSlider = async () => {
         words = await getWords(numWords);
         passwordInput.value = words.join("");
     } else {
-        const staticPassword = Object.values(characters).join("");
+        let staticPassword = "";
+        for (const option of options) {
+            if (option.checked && option.id !== "words") {
+                staticPassword += characters[option.id];
+            }
+        }
         let randomPassword = "";
 
         for (let i = 0; i < lengthSlider.value; i++) {
-        let randomChar = staticPassword[Math.floor(Math.random() * staticPassword.length)];
-        randomPassword += randomChar;
+            let randomChar = staticPassword[Math.floor(Math.random() * staticPassword.length)];
+            randomPassword += randomChar;
         }
 
         passwordInput.value = randomPassword;
@@ -103,6 +105,7 @@ const updateSlider = async () => {
     
     updatePassIndicator();
 };
+
 
 updateSlider();
 
