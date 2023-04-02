@@ -44,10 +44,6 @@ const updatePassIndicator = () => {
     passIndicator.id = lengthSlider.value <= 6 ? "weakest" : lengthSlider.value <= 12 ? "weak" : lengthSlider.value <= 18 ? "medium" : "strong"
 }
 
-
-
-
-
 const updateSlider = () => {
     document.querySelector(".pass-length span").innerText = lengthSlider.value;
     generatePassword();
@@ -58,11 +54,11 @@ updateSlider();
 const copyPassword = () => {
     navigator.clipboard.writeText(passwordInput.value);
     copyIcon.innerText = "check";
-    copyIcon.style.color = "#4285f4";
+    copyIcon.style.color = "#43A047";
     setTimeout(() => {
         copyIcon.innerText = "copy_all";
         copyIcon.style.color = "#707070";
-    }, 1500);
+    }, 1000);
 }
 
 copyIcon.addEventListener("click", copyPassword);
