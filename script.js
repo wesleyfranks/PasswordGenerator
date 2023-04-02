@@ -123,12 +123,7 @@ copyIcon.addEventListener("click", copyPassword);
 lengthSlider.addEventListener("input", updateSlider);
 generateBtn.addEventListener("click", generatePassword);
 passwordInput.addEventListener("input", function() {
-  if (passwordInput.value.length > 32) {
-    passwordInput.style.height = "auto";
-    passwordInput.style.height = passwordInput.scrollHeight + "px";
-  } else {
-    passwordInput.style.height = "32px";
-  }
+    
 });
 wordsOption.addEventListener("change", function () {
     if (this.checked) {
@@ -137,6 +132,11 @@ wordsOption.addEventListener("change", function () {
                 option.checked = false;
             }
         });
+        console.log("passwordInput length changed =" + passwordInput.value.length)
+        if (passwordInput.value.length > 32) {
+            passwordInput.style.height = "auto";
+            passwordInput.style.height = passwordInput.scrollHeight + "px";
+        } 
         updateSlider()
     }
 })
