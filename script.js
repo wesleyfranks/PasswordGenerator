@@ -68,36 +68,37 @@ const generatePassword = async () => {
 
 
 const updatePassIndicator = () => {
-  passIndicator.id =
-    lengthSlider.value <= 6
-      ? "weakest"
-      : lengthSlider.value <= 12
-      ? "weak"
-      : lengthSlider.value <= 18
-      ? "medium"
-      : "strong";
+    passIndicator.id =
+        lengthSlider.value <= 6
+        ? "weakest"
+        : lengthSlider.value <= 12
+        ? "weak"
+        : lengthSlider.value <= 18
+        ? "medium"
+        : "strong";
 };
 
 const updateSlider = async () => {
-  const numWords = lengthSlider.value;
-  let words = [];
-  
-  if (wordsOption.checked) {
-    words = await getWords(numWords);
-    passwordInput.value = words.join("");
-  } else {
-    const staticPassword = Object.values(characters).join("");
-    let randomPassword = "";
+    document.querySelector(".pass-length span").innerHTML = lengthSlider.value
+    const numWords = lengthSlider.value;
+    let words = [];
+    
+    if (wordsOption.checked) {
+        words = await getWords(numWords);
+        passwordInput.value = words.join("");
+    } else {
+        const staticPassword = Object.values(characters).join("");
+        let randomPassword = "";
 
-    for (let i = 0; i < lengthSlider.value; i++) {
-      let randomChar = staticPassword[Math.floor(Math.random() * staticPassword.length)];
-      randomPassword += randomChar;
+        for (let i = 0; i < lengthSlider.value; i++) {
+        let randomChar = staticPassword[Math.floor(Math.random() * staticPassword.length)];
+        randomPassword += randomChar;
+        }
+
+        passwordInput.value = randomPassword;
     }
-
-    passwordInput.value = randomPassword;
-  }
-  
-  updatePassIndicator();
+    
+    updatePassIndicator();
 };
 
 updateSlider();
