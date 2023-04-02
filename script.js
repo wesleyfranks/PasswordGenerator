@@ -32,10 +32,10 @@ const generatePassword = async () => {
   let excludeDuplicate = false;
   let passLength = lengthSlider.value;
 
-  options.forEach((option) => {
+  for (const option of options) {
     if (option.checked) {
       if (option.id === "words") {
-        const numWords = Math.ceil(lengthSlider.value / 3);
+        const numWords = lengthSlider.value;
         const words = await getWords(numWords);
         staticPassword += words.join("");
         passLength = words.length;
@@ -45,23 +45,25 @@ const generatePassword = async () => {
         excludeDuplicate = true;
       }
     }
-  });
-
-  for (let i = 0; i < passLength; i++) {
-    let randomChar =
-      staticPassword[Math.floor(Math.random() * staticPassword.length)];
-    if (excludeDuplicate) {
-      !randomPassword.includes(randomChar)
-        ? (randomPassword += randomChar)
-        : i--;
-    } else {
-      randomPassword += randomChar;
-    }
   }
 
-  passwordInput.value = randomPassword;
-  updatePassIndicator();
+  if (staticPassword !== "") {
+    for (let i = 0; i < passLength; i++) {
+      let randomChar =
+        staticPassword[Math.floor(Math.random() * staticPassword.length)];
+      if (excludeDuplicate) {
+        !randomPassword.includes(randomChar)
+          ? (randomPassword += randomChar)
+          : i--;
+      } else {
+        randomPassword += randomChar;
+      }
+    }
+    passwordInput.value = randomPassword;
+  }
 };
+
+
 
 const updatePassIndicator = () => {
   passIndicator.id =
