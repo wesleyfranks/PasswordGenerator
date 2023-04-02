@@ -79,6 +79,9 @@ const updatePassIndicator = () => {
 };
 
 const updateSlider = async () => {
+
+    passwordInput.value = ""
+
     document.querySelector(".pass-length span").innerHTML = lengthSlider.value
     const numWords = lengthSlider.value;
     let words = [];
@@ -126,3 +129,5 @@ wordsOption.addEventListener("change", function () {
     }
     generatePassword()
 })
+
+updateSlider()
