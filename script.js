@@ -78,11 +78,28 @@ const updatePassIndicator = () => {
       : "strong";
 };
 
-const updateSlider = () => {
-    document.querySelector(".pass-length span").innerText = lengthSlider.value;
-    generatePassword();
-    updatePassIndicator();
-}
+const updateSlider = async () => {
+  const numWords = Math.ceil(lengthSlider.value / 3);
+  let words = [];
+  
+  if (wordsOption.checked) {
+    words = await getWords(numWords);
+    passwordInput.value = words.join("");
+  } else {
+    const staticPassword = Object.values(characters).join("");
+    let randomPassword = "";
+
+    for (let i = 0; i < lengthSlider.value; i++) {
+      let randomChar = staticPassword[Math.floor(Math.random() * staticPassword.length)];
+      randomPassword += randomChar;
+    }
+
+    passwordInput.value = randomPassword;
+  }
+  
+  updatePassIndicator();
+};
+
 updateSlider();
 
 const copyPassword = () => {
