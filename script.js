@@ -29,44 +29,43 @@ const getWords = async (numWords) => {
 };
 
 const generatePassword = async () => {
-    console.log("----------generatePassword function ran------------")    
-    let staticPassword = "";
-    let randomPassword = "";
-    let excludeDuplicate = false;
-    let passLength = lengthSlider.value;
+  console.log("----------generatePassword function ran------------");
+  let staticPassword = "";
+  let randomPassword = "";
+  let excludeDuplicate = false;
+  let passLength = lengthSlider.value;
 
-    for (const option of options) {
-        if (option.checked) {
-        if (option.id === "words") {
-            const numWords = lengthSlider.value;
-            const words = await getWords(numWords);
-            staticPassword += words.join("");
-            passLength = words.length;
-        } else if (option.id !== "exc-duplicate") {
-            staticPassword += characters[option.id];
-        } else {
-            excludeDuplicate = true;
-        }
-        } else{
-            if (staticPassword !== "") {
-            for (let i = 0; i < passLength; i++) {
-            let randomChar =
-                staticPassword[Math.floor(Math.random() * staticPassword.length)];
-            if (excludeDuplicate) {
-                !randomPassword.includes(randomChar)
-                ? (randomPassword += randomChar)
-                : i--;
-            } else {
-                randomPassword += randomChar;
-            }
-            }
-            passwordInput.value = randomPassword;
+  for (const option of options) {
+    if (option.checked) {
+      if (option.id === "words") {
+        const numWords = lengthSlider.value;
+        const words = await getWords(numWords);
+        staticPassword += words.join("");
+        passLength = words.length;
+      } else if (option.id !== "exc-duplicate") {
+        staticPassword += characters[option.id];
+      } else {
+        excludeDuplicate = true;
+      }
     }
-        }
-    }
+  }
 
-  
+  if (staticPassword !== "") {
+    for (let i = 0; i < passLength; i++) {
+      let randomChar =
+        staticPassword[Math.floor(Math.random() * staticPassword.length)];
+      if (randomPassword.includes(randomChar)) {
+        i--;
+      } else {
+        randomPassword += randomChar;
+      }
+    }
+    passwordInput.value = randomPassword;
+  }
+
+  console.log("passwordInput Length = " + passwordInput.value.length)
 };
+
 
 const updatePassIndicator = () => {
     passIndicator.id =
@@ -81,14 +80,15 @@ const updatePassIndicator = () => {
 
 const updateSlider = async () => {
   document.querySelector(".pass-length span").innerHTML = lengthSlider.value;
-  const numWords = lengthSlider.value;
-  let words = [];
-  passwordInput.value = ""
 
   if (wordsOption.checked) {
+    lengthSlider.value = 5
+    const numWords = lengthSlider.value;
+    let words = [];
     console.log("wordsOption is checked")
     words = await getWords(numWords);
     passwordInput.value = words.join("");
+    document.querySelector(".pass-length span").innerHTML = lengthSlider.value;
   } else {
     let staticPassword = "";
     options.forEach((option) => {
@@ -105,6 +105,8 @@ const updateSlider = async () => {
     passwordInput.value = randomPassword;
   }
   updatePassIndicator();
+
+  console.log("passwordInput Length = " + passwordInput.value.length)
 };
 
 const copyPassword = () => {
@@ -128,7 +130,6 @@ wordsOption.addEventListener("change", function () {
             }
         });
         updateSlider()
-        generatePassword()
     }
 })
 
