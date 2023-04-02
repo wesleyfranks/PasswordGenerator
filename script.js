@@ -29,43 +29,44 @@ const getWords = async (numWords) => {
 };
 
 const generatePassword = async () => {
-  let staticPassword = "";
-  let randomPassword = "";
-  let excludeDuplicate = false;
-  let passLength = lengthSlider.value;
+    console.log("----------generatePassword function ran------------")    
+    let staticPassword = "";
+    let randomPassword = "";
+    let excludeDuplicate = false;
+    let passLength = lengthSlider.value;
 
-  for (const option of options) {
-    if (option.checked) {
-      if (option.id === "words") {
-        const numWords = lengthSlider.value;
-        const words = await getWords(numWords);
-        staticPassword += words.join("");
-        passLength = words.length;
-      } else if (option.id !== "exc-duplicate") {
-        staticPassword += characters[option.id];
-      } else {
-        excludeDuplicate = true;
-      }
+    for (const option of options) {
+        if (option.checked) {
+        if (option.id === "words") {
+            const numWords = lengthSlider.value;
+            const words = await getWords(numWords);
+            staticPassword += words.join("");
+            passLength = words.length;
+        } else if (option.id !== "exc-duplicate") {
+            staticPassword += characters[option.id];
+        } else {
+            excludeDuplicate = true;
+        }
+        } else{
+            if (staticPassword !== "") {
+            for (let i = 0; i < passLength; i++) {
+            let randomChar =
+                staticPassword[Math.floor(Math.random() * staticPassword.length)];
+            if (excludeDuplicate) {
+                !randomPassword.includes(randomChar)
+                ? (randomPassword += randomChar)
+                : i--;
+            } else {
+                randomPassword += randomChar;
+            }
+            }
+            passwordInput.value = randomPassword;
     }
-  }
+        }
+    }
 
-  if (staticPassword !== "") {
-    for (let i = 0; i < passLength; i++) {
-      let randomChar =
-        staticPassword[Math.floor(Math.random() * staticPassword.length)];
-      if (excludeDuplicate) {
-        !randomPassword.includes(randomChar)
-          ? (randomPassword += randomChar)
-          : i--;
-      } else {
-        randomPassword += randomChar;
-      }
-    }
-    passwordInput.value = randomPassword;
-  }
+  
 };
-
-
 
 const updatePassIndicator = () => {
     passIndicator.id =
@@ -79,32 +80,33 @@ const updatePassIndicator = () => {
 };
 
 const updateSlider = async () => {
-    document.querySelector(".pass-length span").innerHTML = lengthSlider.value;
-    const numWords = lengthSlider.value;
-    let words = [];
-    
-    if (wordsOption.checked) {
-        words = await getWords(numWords);
-        passwordInput.value = words.join("");
-    } else {
-        let staticPassword = "";
-        for (const option of options) {
-            if (option.checked && option.id !== "words") {
-                staticPassword += characters[option.id];
-            }
-        }
-        let randomPassword = "";
+  document.querySelector(".pass-length span").innerHTML = lengthSlider.value;
+  const numWords = lengthSlider.value;
+  let words = [];
+  passwordInput.value = ""
 
-        for (let i = 0; i < lengthSlider.value; i++) {
-            let randomChar = staticPassword[Math.floor(Math.random() * staticPassword.length)];
-            randomPassword += randomChar;
-        }
+  if (wordsOption.checked) {
+    console.log("wordsOption is checked")
+    words = await getWords(numWords);
+    passwordInput.value = words.join("");
+  } else {
+    let staticPassword = "";
+    options.forEach((option) => {
+      if (option.checked && option.id !== "words" && option.id !== "exc-duplicate") {
+        staticPassword += characters[option.id];
+      }
+    });
 
-        passwordInput.value = randomPassword;
+    let randomPassword = "";
+    for (let i = 0; i < lengthSlider.value; i++) {
+      let randomChar = staticPassword[Math.floor(Math.random() * staticPassword.length)];
+      randomPassword += randomChar;
     }
-    
-    updatePassIndicator();
+    passwordInput.value = randomPassword;
+  }
+  updatePassIndicator();
 };
+
 
 
 updateSlider();
@@ -129,8 +131,7 @@ wordsOption.addEventListener("change", function () {
                 option.checked = false;
             }
         });
+        updateSlider()
+        generatePassword()
     }
-    generatePassword()
 })
-
-updateSlider()
