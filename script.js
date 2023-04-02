@@ -122,6 +122,14 @@ const copyPassword = () => {
 copyIcon.addEventListener("click", copyPassword);
 lengthSlider.addEventListener("input", updateSlider);
 generateBtn.addEventListener("click", generatePassword);
+passwordInput.addEventListener("input", function() {
+  if (passwordInput.value.length > 32) {
+    passwordInput.style.height = "auto";
+    passwordInput.style.height = passwordInput.scrollHeight + "px";
+  } else {
+    passwordInput.style.height = "32px";
+  }
+});
 wordsOption.addEventListener("change", function () {
     if (this.checked) {
         options.forEach(option => {
