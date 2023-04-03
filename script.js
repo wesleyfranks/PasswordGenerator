@@ -38,7 +38,7 @@ const generatePassword = async () => {
   console.log("----------generatePassword function ran------------");
   let staticPassword = "";
   let randomPassword = "";
-  let excludeDuplicate = false;
+  let Duplicate = false;
   let passLength = lengthSlider.value;
 
   for (const option of options) {
@@ -53,20 +53,21 @@ const generatePassword = async () => {
       } else {
         excludeDuplicate = true;
       }
+      passwordInput.value = staticPassword;
+    }else{
+        if (staticPassword !== "") {
+            for (let i = 0; i < passLength; i++) {
+                let randomChar =
+                    staticPassword[Math.floor(Math.random() * staticPassword.length)];
+                if (randomPassword.includes(randomChar)) {
+                    i--;
+                } else {
+                    randomPassword += randomChar;
+                }
+            }
+            passwordInput.value = randomPassword;
+        }
     }
-  }
-
-  if (staticPassword !== "") {
-    for (let i = 0; i < passLength; i++) {
-      let randomChar =
-        staticPassword[Math.floor(Math.random() * staticPassword.length)];
-      if (randomPassword.includes(randomChar)) {
-        i--;
-      } else {
-        randomPassword += randomChar;
-      }
-    }
-    passwordInput.value = randomPassword;
   }
 
   console.log("passwordInput Length = " + passwordInput.value.length)
@@ -135,12 +136,30 @@ passwordInput.addEventListener("input", function () {
     passInputHeightCheck();
 });
 
+options.forEach((option) => {
+    if (option.id !== "words") {
+        option.addEventListener("change", function () {
+            generatePassword();
+        });
+    }
+    option.addEventListener("click", () => {
+        if(option.checked){
+
+        }else{
+            if (!option.checked && document.querySelectorAll(".option input:checked").length === 1 && option.id !== "exc-duplicate") {
+                option.checked = true;
+            }
+        }
+    });
+});
+
 wordsOption.addEventListener("change", function () {
     if (this.checked) {
         options.forEach(option => {
         lengthSlider.value = 5
             if (option.id !== "words") {
                 option.checked = false;
+                option.disabled = true;
             }
         });
         console.log("passwordInput length changed =" + passwordInput.value.length)
@@ -150,6 +169,7 @@ wordsOption.addEventListener("change", function () {
         options.forEach(option => {
             if (option.id !== "words") {
                 option.checked = true;
+                option.disabled = false;
                 generatePassword();
             }
         });
