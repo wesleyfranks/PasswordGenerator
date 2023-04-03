@@ -38,7 +38,6 @@ const generatePassword = async () => {
   console.log("----------generatePassword function ran------------");
   let staticPassword = "";
   let randomPassword = "";
-  let Duplicate = false;
   let passLength = lengthSlider.value;
 
   for (const option of options) {
@@ -53,25 +52,25 @@ const generatePassword = async () => {
       } else {
         excludeDuplicate = true;
       }
-      passwordInput.value = staticPassword;
-    }else{
-        if (staticPassword !== "") {
-            for (let i = 0; i < passLength; i++) {
-                let randomChar =
-                    staticPassword[Math.floor(Math.random() * staticPassword.length)];
-                if (randomPassword.includes(randomChar)) {
-                    i--;
-                } else {
-                    randomPassword += randomChar;
-                }
-            }
-            passwordInput.value = randomPassword;
-        }
     }
   }
 
-  console.log("passwordInput Length = " + passwordInput.value.length)
+  if (staticPassword !== "") {
+    for (let i = 0; i < passLength; i++) {
+      let randomChar =
+        staticPassword[Math.floor(Math.random() * staticPassword.length)];
+      if (excludeDuplicate && randomPassword.includes(randomChar)) {
+        i--;
+      } else {
+        randomPassword += randomChar;
+      }
+    }
+    passwordInput.value = randomPassword;
+  }
+
+  console.log("passwordInput Length = " + passwordInput.value.length);
 };
+
 
 
 const updatePassIndicator = () => {
@@ -156,7 +155,7 @@ options.forEach((option) => {
 wordsOption.addEventListener("change", function () {
     if (this.checked) {
         options.forEach(option => {
-        lengthSlider.value = 5
+        lengthSlider.value = 3
             if (option.id !== "words") {
                 option.checked = false;
                 option.disabled = true;
