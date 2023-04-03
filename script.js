@@ -82,7 +82,6 @@ const updateSlider = async () => {
   document.querySelector(".pass-length span").innerHTML = lengthSlider.value;
 
   if (wordsOption.checked) {
-    lengthSlider.value = 5
     const numWords = lengthSlider.value;
     let words = [];
     console.log("wordsOption is checked")
@@ -119,11 +118,15 @@ const copyPassword = () => {
     }, 1000);
 }
 
+const passInputHeightCheck = () => {
+    
+}
+
 copyIcon.addEventListener("click", copyPassword);
 lengthSlider.addEventListener("input", updateSlider);
 generateBtn.addEventListener("click", generatePassword);
-passwordInput.addEventListener("input", function() {
-    
+passwordInput.addEventListener("input", function () {
+    passInputHeightCheck();
 });
 wordsOption.addEventListener("change", function () {
     if (this.checked) {
@@ -133,10 +136,7 @@ wordsOption.addEventListener("change", function () {
             }
         });
         console.log("passwordInput length changed =" + passwordInput.value.length)
-        if (passwordInput.value.length > 32) {
-            passwordInput.style.height = "auto";
-            passwordInput.style.height = passwordInput.scrollHeight + "px";
-        } 
+        passInputHeightCheck()
         updateSlider()
     }
 })
