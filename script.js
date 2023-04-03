@@ -5,6 +5,12 @@ const passwordInput = document.querySelector(".input-box input");
 const passIndicator = document.querySelector(".pass-indicator");
 const generateBtn = document.querySelector(".generate-btn");
 const wordsOption = document.querySelector("#words");
+const lowercaseOption = document.querySelector("#lowercase")
+const uppercaseOption = document.querySelector("#uppercase")
+const numbersOption = document.querySelector("#numbers")
+const symbolsOption = document.querySelector("#symbols")
+const excludeDupsOption = document.querySelector("#exc-duplicate")
+
 
 
 const characters = {
@@ -128,9 +134,11 @@ generateBtn.addEventListener("click", generatePassword);
 passwordInput.addEventListener("input", function () {
     passInputHeightCheck();
 });
+
 wordsOption.addEventListener("change", function () {
     if (this.checked) {
         options.forEach(option => {
+        lengthSlider.value = 5
             if (option.id !== "words") {
                 option.checked = false;
             }
@@ -142,3 +150,4 @@ wordsOption.addEventListener("change", function () {
 })
 
 updateSlider();
+generatePassword();
