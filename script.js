@@ -146,6 +146,13 @@ wordsOption.addEventListener("change", function () {
         console.log("passwordInput length changed =" + passwordInput.value.length)
         passInputHeightCheck()
         updateSlider()
+    }else{
+        options.forEach(option => {
+            if (option.id !== "words") {
+                option.checked = true;
+                generatePassword();
+            }
+        });
     }
 })
 
