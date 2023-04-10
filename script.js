@@ -156,34 +156,3 @@ wordsOption.addEventListener("change", function () {
 
 updateSlider();
 generatePassword();
-
-
-
-
-// for (const option of options) {
-//     if (option.checked) {
-//       if (option.id === "words") {
-//         const numWords = lengthSlider.value;
-//         const words = await getWords(numWords);
-//         staticPassword += words.join("");
-//         passLength = words.length;
-//       } else if (option.id !== "exc-duplicate") {
-//         staticPassword += characters[option.id];
-//       } else {
-//         excludeDuplicate = true;
-//       }
-//     }
-//   }
-
-//   if (staticPassword !== "") {
-//     for (let i = 0; i < passLength; i++) {
-//       let randomChar =
-//         staticPassword[Math.floor(Math.random() * staticPassword.length)];
-//       if (excludeDuplicate && randomPassword.includes(randomChar)) {
-//         i--;
-//       } else {
-//         randomPassword += randomChar;
-//       }
-//     }
-//     passwordInput.value = randomPassword;
-//   }
