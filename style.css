@@ -52,7 +52,7 @@ body {
 .input-box input{
     width: 100%;
     height: auto;
-    min-height: 53px;
+    min-height: 50px;
     max-height: 212px;
     color: #000;
     background: none;
@@ -63,7 +63,7 @@ body {
     border: 1px solid #aaa;
     padding: 0 2.85rem 0 1rem;
     overflow-y: auto;
-    white-space: wrap;
+    white-space: pre-wrap;
 }
 
 .input-box span{

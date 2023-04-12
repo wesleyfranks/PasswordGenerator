@@ -97,12 +97,14 @@ const copyPassword = () => {
 }
 
 const passInputHeightCheck = () => {
-  if (passwordInput.scrollHeight > passwordInput.clientHeight) {
-    passwordInput.style.height = passwordInput.scrollHeight + "px";
-  }
+  options.forEach((option) => {
+    if(option.id === "words"){
+      if (passLength.value > 3) {
+        passwordInput.style.height = "106px";
+      }
+    }
+  })
 };
-
-
 
 copyIcon.addEventListener("click", copyPassword);
 lengthSlider.addEventListener("input", updateSlider);
