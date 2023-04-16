@@ -1,0 +1,21 @@
+{
+  "name": "passwordgenerator",
+  "version": "1.0.0",
+  "description": "Password Generator and Word Generator",
+  "main": "script.js",
+  "scripts": {
+    "build":"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "firebase deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ironfruit/PasswordGenerator.git"
+  },
+  "author": "Wesley Franks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ironfruit/PasswordGenerator/issues"
+  },
+  "homepage": "https://github.com/ironfruit/PasswordGenerator#readme"
+}
