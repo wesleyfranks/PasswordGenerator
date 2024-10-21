@@ -35,38 +35,6 @@ Check out the tutorial project:
 - **Netlify:** Hosting and continuous deployment of the application.
 - **Random Word API:** Fetching random words for passphrase generation.
 
-## 🛠️ Installation
-
-Follow these steps to set up the project locally:
-
-1. **Clone the Repository**
-
-   ```bash
-   git clone https://github.com/wesleyfranks/wesleyfranks-passgen.git
-   ```
-
-2. **Navigate to the Project Directory**
-
-   ```bash
-   cd wesleyfranks-passgen
-   ```
-
-3. **Install Dependencies**
-
-   Ensure you have [Node.js](https://nodejs.org/) installed. Then run:
-
-   ```bash
-   npm install
-   ```
-
-4. **Start the Development Server**
-
-   ```bash
-   npm start
-   ```
-
-   The application will open in your default browser at `http://localhost:3000`.
-
 ## 📱 Usage
 
 1. **Select Password Type:**
