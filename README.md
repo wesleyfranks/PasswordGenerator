@@ -2,7 +2,14 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/978c7053-52a0-4c80-8def-44034d269f05/deploy-status)](https://app.netlify.com/sites/wesleyfranks-passgen/deploys)
 
-Welcome to the **Wesley Franks Password Generator**! A versatile and secure tool designed to help you create strong passwords effortlessly. Whether you prefer character-based passwords or passphrases composed of random words, this generator caters to all your password creation needs.
+Welcome to the **Wesley Franks Password Generator**! A versatile and secure tool designed to help you create strong passwords effortlessly. Whether you prefer character-based passwords or passphrases composed of random words, this generator caters to all your password creation needs. 
+
+# Special Thanks and Reference to ASMRProg on YouTube
+
+Reference YouTube link: https://www.youtube.com/watch?v=825u2Puaej0
+Github: https://github.com/AsmrProg-YT/100-days-of-javascript/tree/master/Day%20%2303%20-%20Pass%20Generator
+
+I made this as a tutorial project. I did in fact add the words functionality. Originally this project was just static HTML, CSS, and Javscript. I adjusted the project for ReactJS + Vite.
 
 ## 🖥️ Live Demo
 
