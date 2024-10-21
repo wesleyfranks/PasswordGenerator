@@ -1,0 +1,249 @@
+/* index.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --primary-color: #9500ff;
+    --green-color: #43A047;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: var(--primary-color);
+}
+
+.container {
+    width: 450px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.container h2 {
+    font-weight: 600;
+    font-size: 1.31rem;
+    padding: 1rem 1.75rem;
+    border-bottom: 1px solid #d4dbe5;
+}
+
+.wrapper {
+    margin: 1.25rem 1.75rem;
+}
+
+.wrapper .input-box {
+    position: relative;
+}
+
+.input-box {
+    position: relative;
+    display: flex;
+}
+
+.input-box textarea {
+    width: 100%;
+    min-height: 50px;
+    max-height: 300px; /* Increased max-height */
+    resize: none;
+    overflow-y: auto; /* Allow vertical scrolling if content exceeds max-height */
+    color: #000;
+    background: none;
+    font-size: 1.06rem;
+    line-height: 1.5;
+    font-weight: 500;
+    border-radius: 4px;
+    letter-spacing: 1.4px;
+    border: 1px solid #aaa;
+    padding: 12px 2.85rem 12px 1rem;
+    white-space: pre-wrap;
+}
+
+.input-box .material-symbols-rounded {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #707070;
+    transition: color 0.3s;
+}
+
+.input-box .material-symbols-rounded:hover {
+    color: var(--primary-color) !important;
+}
+
+.wrapper .pass-indicator {
+    width: 93%;
+    height: 7px;
+    position: relative;
+    margin: 0.75rem .75rem;
+    border-radius: 25px;
+    background-color: #e0e0e0;
+    overflow: hidden;
+}
+
+.pass-indicator::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 0%;
+    border-radius: inherit;
+    transition: width 0.6s ease;
+}
+
+.pass-indicator.weakest::before {
+    width: 25%;
+    background: #e64a4a;
+}
+
+.pass-indicator.weak::before {
+    width: 50%;
+    background: #e6ba4a;
+}
+
+.pass-indicator.medium::before {
+    width: 75%;
+    background: var(--primary-color); 
+}
+
+.pass-indicator.strong::before {
+    width: 100%;
+    background: var(--green-color); 
+}
+
+.wrapper .pass-length {
+    margin: 1.56rem 0 1.25rem;
+}
+
+.pass-length .details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pass-length input {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    background-color: #ddd;
+    border-radius: 5px;
+    outline: none;
+    margin-top: 10px;
+}
+
+.pass-length input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--primary-color);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.pass-length input::-moz-range-thumb {
+    background-color: var(--primary-color);
+    width: 16px;
+    height: 16px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.pass-length input:focus {
+    outline: none;
+}
+
+.pass-settings .options {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.pass-settings .options .option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: calc(100% / 2);
+}
+
+.options .option input[type='checkbox'] {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+.options .option input[type='checkbox']::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--primary-color);
+}
+
+.options .option input[type='checkbox']:checked::before {
+    transform: scale(1);
+}
+
+.options .option input[type='checkbox']:disabled {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+    cursor: not-allowed;
+}
+
+.options .option input[type='checkbox']:disabled + label {
+    color: #b0b0b0;
+    cursor: not-allowed;
+}
+
+.options .option label {
+    cursor: pointer;
+    color: #4f4f4f;
+    padding-left: 0.63rem;
+}
+
+.wrapper .generate-btn {
+    width: 100%;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: var(--primary-color);
+    font-size: 1.06rem;
+    padding: 0.94rem 0;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin: 0.94rem 0 1.3rem;
+    transition: background-color 0.3s;
+}
+
+.wrapper .generate-btn:hover {
+    background-color: #7a00cc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        margin: 20px;
+    }
+}
