@@ -85,41 +85,6 @@ Follow these steps to set up the project locally:
 5. **View Password Strength:**
    - The strength indicator below the password display provides visual feedback on the security level of your generated password.
 
-## 📸 Screenshots
-
-![alt text](<Screenshot 2024-10-21 at 1.38.12 PM.png>)
-![alt text](<Screenshot 2024-10-21 at 1.38.26 PM.png>)
-
-## 🤝 Contributing
-
-Contributions are welcome! Follow these steps to contribute:
-
-1. **Fork the Repository**
-
-2. **Create a New Branch**
-
-   ```bash
-   git checkout -b feature/YourFeatureName
-   ```
-
-3. **Commit Your Changes**
-
-   ```bash
-   git commit -m "Add your message here"
-   ```
-
-4. **Push to the Branch**
-
-   ```bash
-   git push origin feature/YourFeatureName
-   ```
-
-5. **Open a Pull Request**
-
-## 📝 License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ## 📫 Contact
 
 Have questions or feedback? Reach out to me:
@@ -127,9 +92,3 @@ Have questions or feedback? Reach out to me:
 - **Email:** [code.wesleyfranks@gmail.com](mailto:code.wesleyfranks@gmail.com)
 - **LinkedIn:** [Wesley Franks](https://www.linkedin.com/in/wesleyfranks/)
 - **GitHub:** [@wesleyfranks](https://github.com/wesleyfranks)
-
----
-
-Thank you for using the **Password Generator**! Stay secure and happy password creating! 🔒✨
-
----
