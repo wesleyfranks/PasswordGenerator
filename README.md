@@ -60,3 +60,4 @@ Have questions or feedback? Reach out to me:
 - **Email:** [code.wesleyfranks@gmail.com](mailto:code.wesleyfranks@gmail.com)
 - **LinkedIn:** [Wesley Franks](https://www.linkedin.com/in/wesleyfranks/)
 - **GitHub:** [@wesleyfranks](https://github.com/wesleyfranks)
+- **Twitter (x):** [@wesleyfranks](https://x.com/wesleyfranks)
