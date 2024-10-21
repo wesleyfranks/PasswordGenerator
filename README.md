@@ -1,4 +1,4 @@
-# Wesley Franks Password Generator
+# Tutorial Password Generator
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/978c7053-52a0-4c80-8def-44034d269f05/deploy-status)](https://app.netlify.com/sites/wesleyfranks-passgen/deploys)
 
