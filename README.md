@@ -7,7 +7,14 @@
 - Reference YouTube link: https://www.youtube.com/watch?v=825u2Puaej0
 - Github: https://github.com/AsmrProg-YT/100-days-of-javascript/tree/master/Day%20%2303%20-%20Pass%20Generator
 
-I made this as a tutorial project. I did in fact add the words functionality and adjust the input element to a textarea element to allow for dynamic adjustment of the height of the textarea when text overflows. Originally this project was just static HTML, CSS, and Javscript. I adjusted the project for ReactJS + Vite.
+I made this as a tutorial project. 
+
+Changes that I made: 
+
+- Add the words functionality to the options checkboxes
+- Adjust the input element to a textarea element to allow for dynamic adjustment of the height of the textarea when text overflows.
+
+Originally this project was just static HTML, CSS, and Javscript. I adjusted the project for ReactJS + Vite.
 
 ## 🖥️ Live Demo
 
